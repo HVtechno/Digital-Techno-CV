@@ -1,6 +1,13 @@
 from pathlib import Path
 import streamlit as st
 from PIL import Image
+import smtplib
+from dotenv import dotenv_values
+
+env_vars = dotenv_values(".env")
+
+my_email = env_vars["MY_EMAIL"]
+my_password = env_vars["MY_PASSWORD"]
 
 # --- PATH SETTINGS ---
 current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
@@ -178,7 +185,7 @@ with st.container():
 
     # Documention: https://formsubmit.co/ !!! CHANGE EMAIL ADDRESS !!!
     contact_form = """
-    <form action="https://formsubmit.co/hganesh0786@gmail.com" method="POST">
+    <form action="https://formsubmit.co/71f5949b702391928ef227270157d007" method="POST">
         <input type="hidden" name="_captcha" value="false">
         <input type="text" name="name" placeholder="Your name" required>
         <input type="email" name="email" placeholder="Your email" required>
