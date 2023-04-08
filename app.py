@@ -1,13 +1,6 @@
 from pathlib import Path
 import streamlit as st
 from PIL import Image
-import smtplib
-from dotenv import dotenv_values
-
-env_vars = dotenv_values(".env")
-
-my_email = env_vars["MY_EMAIL"]
-my_password = env_vars["MY_PASSWORD"]
 
 # --- PATH SETTINGS ---
 current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
