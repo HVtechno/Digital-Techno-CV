@@ -74,7 +74,7 @@ st.subheader("Tech Stack")
 st.write(
     """
 - 👩‍💻 Web Development: Frontend(Reactjs), Backend(Nodejs)
-- 👩‍💻 Programming: Python, VB, VB.NET
+- 👩‍💻 Programming: Python(Flask, Pandas, Numpy, Streamlit), VB, VB.NET
 - 🗄️  Databases: MSSQL, Azure SQL, Oracle
 - ☁️ Cloud : Azure DevOps
 - 📊 Data Visualization: PowerBi, MS Excel
