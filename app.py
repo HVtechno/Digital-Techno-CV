@@ -1,6 +1,7 @@
 from pathlib import Path
 import streamlit as st
 from PIL import Image
+import datetime
 
 # --- PATH SETTINGS ---
 current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
@@ -8,13 +9,14 @@ css_file = current_dir / "styles" / "main.css"
 resume_file = current_dir / "assets" / "CV.pdf"
 profile_pic = current_dir / "assets" / "profile-pic.png"
 achievement_pic = current_dir / "assets" / "achieve2.png"
+achievement_2_pic = current_dir / "assets" / "achieve3.jpg"
 
 # --- GENERAL SETTINGS ---
 PAGE_TITLE = "Digital CV | Hari"
 PAGE_ICON = ":wave:"
 NAME = "Harihara Subramanian Ganesh"
 DESCRIPTION = """
-DevOps Engineer
+Senior Developer
 """
 EMAIL = "hganesh0786@gmail.com"
 SOCIAL_MEDIA = {
@@ -24,9 +26,27 @@ SOCIAL_MEDIA = {
 PROJECTS = {
     "🏆 Top Performer Award from ABinBEV" : achievement_pic
 }
+PROJECTS_2 = {
+    "🏆 Beer Shot Award from ABinBEV" : achievement_2_pic
+}
+
 
 st.set_page_config(page_title=PAGE_TITLE, page_icon=PAGE_ICON)
 
+# Get the current year and month
+current_date = datetime.date.today()
+current_year = current_date.year
+current_month = current_date.month
+
+# Define the start date for counting years of experience
+start_date = datetime.date(2015, 9, 1)
+
+# Calculate the number of years of experience
+years_of_experience = current_year - start_date.year
+
+# Adjust the years of experience if the current month is before September
+if current_month < 9:
+    years_of_experience -= 1
 
 # --- LOAD CSS, PDF & PROFIL PIC ---
 with open(css_file) as f:
@@ -57,26 +77,28 @@ with col2:
 
 # --- EXPERIENCE & QUALIFICATIONS ---
 st.write('\n')
-st.subheader("Experience Summary")
-st.write(
-    """
-- ✔️ 7 Years experience with various Development roles including DevOps Engineer/Buisness Intelligence/Software Engineer.
-- ✔️ Strong hands on experience in Application/Web Development, Process Automations, Business Intelligence Analytics & Visualizations.
+experience_summary = f"""
+- ✔️ {years_of_experience} Years experience with various Development roles including Senior Developer/DevOps & Data Engineer/Business Intelligence/Software Engineer.
+- ✔️ Strong hands-on experience in Application/Webapps Development, Process Automations, Business Intelligence Analytics & Visualizations.
 - ✔️ Microsoft Certified Azure DevOps Developer
 - ✔️ Excellent team-player and displaying strong sense of initiative on tasks
 - ✔️ Strong Analytical/Debugging/Troubleshooting skills
 """
-)
+
+st.write('\n')
+st.subheader("Experience Summary")
+st.write(experience_summary)
 
 # --- SKILLS --- 
 st.write('\n')
 st.subheader("Tech Stack")
 st.write(
     """
-- 👩‍💻 Web Development: Frontend(Reactjs), Backend(Nodejs)
-- 👩‍💻 Programming: Python(Flask, Pandas, Numpy, Streamlit), VB, VB.NET
-- 🗄️  Databases: MSSQL, Azure SQL, Oracle
-- ☁️ Cloud : Azure DevOps
+- 👩‍💻 Programming: Python(Pandas, Numpy, Streamlit, Matplotlib, Data Automations, API's)
+- 👩‍💻 Web Development: Frontend(Reactjs), Backend(Nodejs & Python Flask)
+- 👩‍💻 Application Development: VB.NET, VB
+- 🗄️  Databases: Azure Databricks, MSSQL, Azure SQL, Oracle
+- ☁️ Cloud : Azure DevOps, Google Cloud, Firebase
 - 📊 Data Visualization: PowerBi, MS Excel
 """
 )
@@ -87,14 +109,17 @@ st.subheader("Work History")
 st.write("---")
 
 # --- JOB 1
-st.write("🚧", "**DevOps Engineer | Anheuser-Busch(ABinBev) | Prague, Czech Republic**")
+st.write("🚧", "**Senior Developer | Anheuser-Busch(ABinBev) | Prague, Czech Republic**")
 st.write("07/2022 - Present")
 st.write(
     """
-- ► Acting as Senior Developer and responsible to build complex web applications using Reactjs & Nodejs
-- ► Developing and maintaining web applications, databases & APIs.
-- ► Managing CI & CD pipelines in Azure DevOps
-- ► Developing & deploying Python scripts to Azure Functions, Azure Databricks Pipelines to perform necessary data transformations & automate workflows.
+- ► Lead Progressive Web Application Development : Led development of 2 intricate web apps with React, Node, and Flask, ensuring high functionality and a 100% user engagement increase.
+- ► Full Stack Expertise : Led the end-to-end development and maintenance of 2 web applications, databases, and APIs, resulting in 95% fewer integration issues and 100% better performance optimization.
+- ► DevOps Management : Manage CI/CD pipelines in Azure DevOps,ensuring efficient, automated, and error-free deployment processes.
+- ► Data Transformation and Automation : Harness Python scripts to deploy data transformations and automate workflows within Azure Functions and Azure Databricks Pipelines. This includes data extraction, manipulation, transformation, and loading into SQL databases, as well as in-depth data analysis using Python libraries such as Pandas and Numpy.
+- ► Data Engineering Proficiency : Utilize a range of data engineering skills to execute ETL jobs, employing python and SQL to create efficient SQL stored procedures, views and automated data processes.
+- ► Azure Cloud Expertise : Leverage Azure cloud services to architect, build and maintain CI/CD pipelines, ensuring the seamless deployment and management of web applications.
+- ► Azure functions Wizardry : Implement Azure functions, including timer and http triggers, resulting in 99% streamlined data automations
 """
 )
 
@@ -104,11 +129,12 @@ st.write("🚧", "**Business Intelligence Expert | Anheuser-Busch(ABinBev) | Pra
 st.write("08/2019 - 07/2022")
 st.write(
     """
-- ► Gathered Business Requirements from stakeholders to understand their data analysis needs and identified the key performance indicators.
-- ► Developed predictive data models & analyzed using python (Pandas, NumPy)
-- ► Build and maintained ETL process that transfer data from sources like SAP GUI/Oracle/MS SharePoint/Databricks into centralized data warehouse (MSSQL Server) using Python/VBScripts.
-- ► Managed and optimized SQL databases (Complex SQL Queries/Stored Procedures/Views)
-- ► Created dashboards and reports that visualize data insights & KPIs in a clear and concise manner using power BI.
+- ► Strategic Data Gathering : Excel in collecting business requirements from stakeholders, aligning with KPIs, and organizational goals
+- ► Advanced Data Modeling : Leveraging proficiency in Python, with a strong focus on Pandas and NumPy libraries, crafting predictive data models that provide actionable insights and recommendations.
+- ► ETL Mastery : Designing, implementing, and maintaining a robust Extract,Transform, Load (ETL) process that transfers data from diverse sources, including SAP GUI, Oracle, MS SharePoint, and Databricks into a centralized data warehouse (Azure SQL Server), using a combination of Python and VBScripts to streamline data integration.
+- ► SQL Database Management : Expertise extending to managing and optimizing SQL databases, adept at crafting complex queries, stored procedures, and views, ensuring data retrieval efficiency.
+- ► Visual Insights : Skilled in crafting Power BI dashboards and reports,simplifying complex data for informed decisions.
+
 """
 )
 
@@ -118,23 +144,21 @@ st.write("🚧", "**Process Specialist | Infosys BPO s.r.o | Brno, Czech Republi
 st.write("05/2017 - 06/2019")
 st.write(
     """
-- ► Experienced in business document preparations, validated functional specifications and analyzed user acceptance test cases through sales force & JIRA.
-- ► Troubleshooted clients inbound trade messages in (CSV & FPML) formats.
-- ► Worked as subject matter expertise and provided technical solutions to external clients.
-- ► Worked closely with various application development teams and escalated client's issue to resolved quickly.
+- ► Document Preparation : Excelling in the preparation of business documents, employing keen attention to detail and validation processes to guarantee their precision and completeness.
+- ► Technical Troubleshooting : Troubleshooting inbound trade messages from clients, handling diverse formats such as CSV and FPML to ensure the smooth flow of data and minimize disruptions.
+- ► Client Solutions : Bringing expertise in client solutions and fostering collaborative teamwork with application development teams to enhance external client experiences and project efficiency.
 """
 )
 
 # --- JOB 4
 st.write('\n')
-st.write("🚧", "**Software Engineer | ATOS(Syntel International PVT.LTD) | Chennai, India**")
+st.write("🚧", "**Software Engineer - Testing | ATOS(Syntel International PVT.LTD) | Chennai, India**")
 st.write("09/2015 - 01/2017")
 st.write(
     """
-- ► Experienced in preparing client's Business Requirement Documents (BRD's Requirement analysis, Test Pan Creation, Test Case preparation and Test Execution
-- ► Involved in Reviewing Test Cases and Manual Walkthrough of Test cases.
-- ► Project sign-up meetings with customer & Functional team on daily progress
-- ► Coordinate the client calls from offshore & present the detailed reports to customer about the testing activities.
+- ► Business Requirement Documents : Proficient in the preparation of Business Requirement Documents (BRD's) for clients, ensuring clarity and precision in project objectives and expectations.
+- ► Requirement Analysis and QA : Conducted requirement analysis, created test plans, prepared test cases, executed tests, and reviewed them to ensure thorough coverage for better deliverable quality.
+- ► Stakeholder Engagement : Engaged in project sign-up meetings with customers, cross-functional teams, and clients to maintain transparent communication, address concerns, and ensure project success.
 """
 )
 
@@ -142,11 +166,19 @@ st.write(
 st.write('\n')
 st.subheader("Certifications & Awards")
 st.write("---")
-st.write("🏆", "**Microsoft Certified - Azure DevOps Developer Associate**")
+st.write("🏆", "**Microsoft Certified - Azure Data Engineer Associate**")
+st.write(
+    """
+- ► Issued On Jul 2023
+- ► Credential ID 48B05988B7337C45
+"""
+)
+st.write('\n')
+st.write("🏆", "**Microsoft Certified - Azure Developer Associate**")
 st.write(
     """
 - ► Issued On Feb 2023
-- ► Credential ID 1596-3046
+- ► Credential ID 3178BE652FCBDDB8
 """
 )
 st.write('\n')
@@ -154,7 +186,21 @@ st.write("🏆", "**Microsoft Certified - Azure Data Fundamentals**")
 st.write(
     """
 - ► Issued On Jun 2022
-- ► Credential ID 1310-7181
+- ► Credential ID 3B89D50D5795920B
+"""
+)
+st.write('\n')
+st.write("🏆", "**LinkedIn : Advanced Core Python Code Challenges**")
+st.write(
+    """
+- ► Issued On Jun 2023
+"""
+)
+st.write('\n')
+st.write("🏆", "**LinkedIn : Advanced Python working with Data**")
+st.write(
+    """
+- ► Issued On Jun 2023
 """
 )
 st.write('\n')
@@ -169,6 +215,12 @@ achievement_pic = Image.open(achievement_pic)
 for project, link in PROJECTS.items():
     st.write(f"[{project}]({link})")
     st.image(achievement_pic, width=520)
+
+st.write('\n')
+achievement_2_pic = Image.open(achievement_2_pic)
+for project, link in PROJECTS_2.items():
+    st.write(f"[{project}]({link})")
+    st.image(achievement_2_pic, width=520)
 
 # --- Contact ----
 st.write('\n')
